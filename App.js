@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { NativeBaseProvider } from 'native-base';
-import MoviesContainer from './assets/src/components/containers/MoviesContainer';
-import Header from './assets/src/components/layout/Header';
+import MoviesContainer from './src/components/containers/MoviesContainer';
+import Header from './src/components/layout/Header';
 
 const App = () => {
   return (
