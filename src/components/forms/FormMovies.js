@@ -6,9 +6,8 @@ const FormMovies = props => {
     const [errors, setErrors] = useState([])
 
     const onValueChange = filterValue => {
-        console.log('as','as')
         props.setFilter(filterValue)
-        props.fetchMovies()
+        props.fetchMovies(filterValue)
     }
 
     return (

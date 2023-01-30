@@ -3,16 +3,17 @@ import { useState } from "react"
 import FormMovies from "../forms/FormMovies"
 import Loading from "../layout/Loading"
 import MoviesList from "../lists/MoviesList"
-import { getPopularMovies } from "../services/api"
+import { getMoviesByFilter } from "../services/moviesApi"
 
 const MoviesContainer = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [movies, setMovies] = useState([])
     const [filter, setFilter] = useState('popular')
 
-    const fetchMovies = () => {
+    const fetchMovies = filterValue => {
         setIsLoading(true)
-        getPopularMovies(filter).then(
+        //console.log('fetching by: ', filterValue)
+        getMoviesByFilter(filterValue).then(
             movies => {
                 setMovies(movies)
                 setIsLoading(false)
@@ -23,7 +24,7 @@ const MoviesContainer = () => {
         )
     }
 
-    console.log('filter: ', filter)
+    //console.log('filter: ', filter)
     //console.log('myMovies', movies)
 
     return (
