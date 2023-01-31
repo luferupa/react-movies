@@ -3,22 +3,22 @@ import { useState } from "react"
 import { IMAGES_URL } from "../config/api_config"
 import { getResultsByFilter } from "../services/moviesApi"
 
-const TvShowContainer = ({ navigation , route }) => {
+const AnyShowContainer = ({ navigation , route }) => {
 
-    const { title, id } = route.params
+    const { title, id, isMovie } = route.params
 
     const [overview, setOverview] = useState()
     const [image, setImage] = useState()
     const [popularity, setPopularity] = useState()
     const [releaseDate, setReleaseDate] = useState()
     
-        //console.log('fetching by: ', movieId)
-       getResultsByFilter(`/tv/${id}`).then(
-            tvShow => {
-                setOverview(tvShow.overview)
-                setImage(`${IMAGES_URL}${tvShow.poster_path}`)
-                setPopularity(tvShow.popularity)
-                setReleaseDate(tvShow.first_air_date)
+    const filter = isMovie? `/movie/${id}` : `/tv/${id}`
+       getResultsByFilter(filter).then(
+            show => {
+                setOverview(show.overview)
+                setImage(`${IMAGES_URL}${show.poster_path}`)
+                setPopularity(show.popularity)
+                setReleaseDate(isMovie? show.release_date : show.first_air_date)
             },
             error => {
                 alert('Error', `Something went wrong: ${error}`)
@@ -49,4 +49,4 @@ const TvShowContainer = ({ navigation , route }) => {
     
 }
 
-export default TvShowContainer
+export default AnyShowContainer
