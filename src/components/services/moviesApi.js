@@ -2,8 +2,8 @@ import axios from 'axios'
 import qs from 'qs'
 import { APP_KEY, BASE_URL } from '../config/api_config'
 
-export const getMoviesByFilter = async filter => {
-    const url = `${BASE_URL}/movie/${filter}`
+export const getResultsByFilter = async filter => {
+    const url = `${BASE_URL}${filter}`
 
     try {
 
@@ -18,13 +18,8 @@ export const getMoviesByFilter = async filter => {
         const response = await moviesAxios.get(url, {params})
 
         //console.log('RESPONSE', response.data.results)
-        //if it's a number it means is a movie details request
-        if(!isNaN(filter)) return response.data
-
-        //if not, it's a movies filter request, with a different response structure
-        const movies = response.data.results
-
-        return movies
+        //response depends on if it's an array or a single object
+        return response.data.results? response.data.results : response.data
         
     } catch (error) {
         throw error

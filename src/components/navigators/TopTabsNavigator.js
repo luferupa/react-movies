@@ -1,10 +1,8 @@
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs"
 import { NavigationContainer } from "@react-navigation/native";
-import MovieScreen from "../screens/MovieScreen";
-import MoviesScreen from "../screens/MoviesScreen";
 import SearchScreen from "../screens/SearchScreen";
-import TvShowsScreen from "../screens/TvShowsScreen";
 import MoviesStack from "./MoviesStack";
+import TvShowsStack from "./TvShowsStack";
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -22,7 +20,9 @@ const TopTabsNavigator = () => {
                 options={{  headerShown: false }}
                 />
                 <Tab.Screen name="Search Results" component={SearchScreen} />
-                <Tab.Screen name="TV Shows" component={TvShowsScreen} />
+                <Tab.Screen 
+                name="TV Shows" 
+                component={TvShowsStack} />
             </Tab.Navigator>
         </NavigationContainer>
     )

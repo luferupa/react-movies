@@ -1,21 +1,22 @@
 import { Center, Container } from "native-base"
-import { useState, useEffect } from "react"
+import { useEffect, useState } from "react"
 import FormMovies from "../forms/FormMovies"
+import FormTvShows from "../forms/FormTvShows"
 import Loading from "../layout/Loading"
 import ResultsList from "../lists/ResultsList"
 import { getResultsByFilter } from "../services/moviesApi"
 
-const MoviesContainer = ({ navigation }) => {
+const TvShowsContainer = ({ navigation }) => {
     const [isLoading, setIsLoading] = useState(false)
-    const [movies, setMovies] = useState([])
+    const [tvShows, setTvShows] = useState([])
     const [filter, setFilter] = useState('popular')
 
-    const fetchMovies = filterValue => {
+    const fetchTvShows = filterValue => {
         setIsLoading(true)
 
-        getResultsByFilter(`/movie/${filterValue}`).then(
-            movies => {
-                setMovies(movies)
+        getResultsByFilter(`/tv/${filterValue}`).then(
+            tvShows => {
+                setTvShows(tvShows)
                 setIsLoading(false)
             },
             error => {
@@ -24,18 +25,19 @@ const MoviesContainer = ({ navigation }) => {
         )
     }
 
-    /*useEffect(() => {
-        fetchMovies(filter)
+ /*   useEffect(() => {
+        fetchTvShows(filter)
     }, [])*/
+
 
     return (
         <Container>
             <Center px={4}>
-                <FormMovies filter={filter} setFilter={setFilter} fetchMovies={fetchMovies} />
-                {isLoading ? <Loading/> : <ResultsList results={movies} navigation={navigation} />}
+                <FormTvShows filter={filter} setFilter={setFilter} fetchTvShows={fetchTvShows} />
+                {isLoading ? <Loading/> : <ResultsList results={tvShows} navigation={navigation} />}
             </Center>
         </Container>
     )
 }
 
-export default MoviesContainer
+export default TvShowsContainer

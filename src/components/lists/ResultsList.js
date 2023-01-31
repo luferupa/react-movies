@@ -1,18 +1,20 @@
 import { FlatList } from "native-base"
-import MovieCard from "../listItems/MovieCard"
+import ResultItemCard from "../listItems/ResultItemCard"
 
-const MoviesList = ({ movies, navigation }) => {
+const ResultsList = ({ results, navigation }) => {
+
     return (
         <FlatList
-        data={movies} 
+        data={results} 
         renderItem={({item}) => (
-            <MovieCard 
+            <ResultItemCard 
             image={item.poster_path}
-            title={item.title}
+            title={item.title? item.title : item.name}
             popularity={item.popularity}
-            releaseDate={item.release_date}
+            releaseDate={item.release_date? item.release_date : item.first_air_date}
             id={item.id}
             navigation={navigation}
+            isMovie={item.title? true : false}
             />
         )}
         keyExtractor={item => item.id} 
@@ -23,4 +25,4 @@ const MoviesList = ({ movies, navigation }) => {
     )
 }
 
-export default MoviesList
+export default ResultsList

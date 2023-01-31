@@ -1,9 +1,9 @@
 import { Box, Center, Heading, Image, Text } from "native-base"
-import { getResultsByFilter } from "../services/moviesApi"
 import { useState } from "react"
 import { IMAGES_URL } from "../config/api_config"
+import { getResultsByFilter } from "../services/moviesApi"
 
-const MovieContainer = ({ navigation , route }) => {
+const TvShowContainer = ({ navigation , route }) => {
 
     const { title, id } = route.params
 
@@ -13,12 +13,12 @@ const MovieContainer = ({ navigation , route }) => {
     const [releaseDate, setReleaseDate] = useState()
     
         //console.log('fetching by: ', movieId)
-       getResultsByFilter(`/movie/${id}`).then(
-            movie => {
-                setOverview(movie.overview)
-                setImage(`${IMAGES_URL}${movie.poster_path}`)
-                setPopularity(movie.popularity)
-                setReleaseDate(movie.release_date)
+       getResultsByFilter(`/tv/${id}`).then(
+            tvShow => {
+                setOverview(tvShow.overview)
+                setImage(`${IMAGES_URL}${tvShow.poster_path}`)
+                setPopularity(tvShow.popularity)
+                setReleaseDate(tvShow.first_air_date)
             },
             error => {
                 alert('Error', `Something went wrong: ${error}`)
@@ -49,4 +49,4 @@ const MovieContainer = ({ navigation , route }) => {
     
 }
 
-export default MovieContainer
+export default TvShowContainer
