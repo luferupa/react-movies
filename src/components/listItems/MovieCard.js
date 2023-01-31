@@ -1,8 +1,8 @@
 import { Box, Button, Center, Heading, HStack, Image, Text, VStack } from "native-base"
-import { IMAGES_URL } from "../config/api_config"
+import { IMAGES_URL, BASE_URL } from "../config/api_config"
 
 const MovieCard = props => {
-    const {image, title, popularity, releaseDate} = props
+    const {image, title, popularity, releaseDate, id, navigation} = props
     return (
         <Box pb={4} mb={1} maxH={120}>
             <HStack>
@@ -14,7 +14,14 @@ const MovieCard = props => {
                     <Text>Popularity: {popularity}</Text>
                     <Text>Release Date: {releaseDate}</Text>
                     <Box padding={2}>
-                        <Button backgroundColor='#07B6D4'>More Details</Button>
+                        <Button backgroundColor='#07B6D4'
+                        onPress={() => {
+                            navigation.navigate('Movie', {
+                                title,
+                                id
+                            })
+                        }}
+                        >More Details</Button>
                     </Box>
                 </VStack>
             </HStack>

@@ -1,8 +1,8 @@
 import MoviesContainer from "../containers/MoviesContainer"
 
-const MoviesScreen = () => {
+const MoviesScreen = ({ navigation }) => {
     return (
-        <MoviesContainer />
+        <MoviesContainer navigation={navigation} />
     )
 }
 

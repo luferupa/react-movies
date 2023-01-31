@@ -5,7 +5,7 @@ import Loading from "../layout/Loading"
 import MoviesList from "../lists/MoviesList"
 import { getMoviesByFilter } from "../services/moviesApi"
 
-const MoviesContainer = () => {
+const MoviesContainer = ({ navigation }) => {
     const [isLoading, setIsLoading] = useState(false)
     const [movies, setMovies] = useState([])
     const [filter, setFilter] = useState('popular')
@@ -31,7 +31,7 @@ const MoviesContainer = () => {
         <Container>
             <Center px={4}>
                 <FormMovies filter={filter} setFilter={setFilter} fetchMovies={fetchMovies} />
-                {isLoading ? <Loading/> : <MoviesList movies={movies} />}
+                {isLoading ? <Loading/> : <MoviesList movies={movies} navigation={navigation} />}
             </Center>
         </Container>
     )
