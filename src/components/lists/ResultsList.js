@@ -1,7 +1,7 @@
 import { FlatList } from "native-base"
 import ResultItemCard from "../listItems/ResultItemCard"
 
-const ResultsList = ({ results, navigation }) => {
+const ResultsList = ({ results, navigation, isSearch=false }) => {
 
     return (
         <FlatList
@@ -15,6 +15,7 @@ const ResultsList = ({ results, navigation }) => {
             id={item.id}
             navigation={navigation}
             isMovie={item.title? true : false}
+            isSearch={isSearch}
             />
         )}
         keyExtractor={item => item.id} 

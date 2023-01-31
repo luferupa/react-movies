@@ -2,12 +2,14 @@ import { Box, Button, Center, Heading, HStack, Image, Text, VStack } from "nativ
 import { IMAGES_URL, BASE_URL } from "../config/api_config"
 
 const ResultItemCard = props => {
-    const {image, title, popularity, releaseDate, id, navigation, isMovie} = props
+    const {image, title, popularity, releaseDate, id, navigation, isMovie, isSearch} = props
     return (
         <Box pb={4} mb={1} maxH={120}>
             <HStack>
                 <Box>
+                    {image != null? 
                     <Image alt={title} source={{ uri: `${IMAGES_URL}${image}` }} size={'xl'} maxH={110} resizeMode='center' />
+                    : <Box width={125}>{title}</Box>}
                 </Box>
                 <VStack>
                     <Heading size='xs' width={230}>{title}</Heading>
@@ -16,15 +18,23 @@ const ResultItemCard = props => {
                     <Box padding={2}>
                         <Button backgroundColor='#07B6D4'
                         onPress={() => {
-                            if(isMovie){
+                            if(isSearch){
+                                navigation.navigate('Search', {
+                                    title,
+                                    id,
+                                    isMovie
+                                })
+                            }else if(isMovie){
                                 navigation.navigate('Movie', {
                                     title,
-                                    id
+                                    id,
+                                    isMovie
                                 })
                             }else{
                                 navigation.navigate('Tv Show', {
                                     title,
-                                    id
+                                    id,
+                                    isMovie
                                 })
                             }
                         }}

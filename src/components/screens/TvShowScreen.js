@@ -1,8 +1,8 @@
-import TvShowContainer from "../containers/TvShowContainer"
+import AnyShowContainer from "../containers/AnyShowContainer"
 
 const TvShowScreen = ({ navigation, route }) => {
     return (
-        <TvShowContainer navigation={navigation} route={route} />
+        <AnyShowContainer navigation={navigation} route={route} />
     )
 }
 

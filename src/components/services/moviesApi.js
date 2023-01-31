@@ -25,3 +25,28 @@ export const getResultsByFilter = async filter => {
         throw error
     }
 }
+
+export const getResultsOfSearch = async (filter, showName) => {
+    const url = `${BASE_URL}${filter}`
+
+    try {
+
+        const params = {
+            api_key: APP_KEY,
+            query: showName
+        }
+        
+        const moviesAxios = axios.create({
+            paramsSerializer: params => qs.stringify(params, { arrayFormat: 'repeat' })
+        })
+
+        const response = await moviesAxios.get(url, {params})
+
+        //console.log('RESPONSE', response.data.results)
+        //response depends on if it's an array or a single object
+        return response.data.results? response.data.results : response.data
+        
+    } catch (error) {
+        throw error
+    }
+}

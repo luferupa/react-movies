@@ -1,9 +1,9 @@
 import AnyShowContainer from "../containers/AnyShowContainer"
 
-const MovieScreen = ({ navigation, route }) => {
+const AnyShowScreen = ({ navigation, route }) => {
     return (
         <AnyShowContainer navigation={navigation} route={route} />
     )
 }
 
-export default MovieScreen
+export default AnyShowScreen

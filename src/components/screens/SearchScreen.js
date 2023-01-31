@@ -1,6 +1,8 @@
-const SearchScreen = () => {
+import SearchContainer from "../containers/SearchContainer"
+
+const SearchScreen = ({ navigation }) => {
     return (
-        <></>
+        <SearchContainer navigation={navigation} />
     )
 }
 
