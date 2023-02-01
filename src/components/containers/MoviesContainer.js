@@ -24,17 +24,17 @@ const MoviesContainer = ({ navigation }) => {
         )
     }
 
-    /*useEffect(() => {
+    useEffect(() => {
         fetchMovies(filter)
-    }, [])*/
+    }, [])
 
     return (
-        <Container>
-            <Center px={4}>
-                <FormMovies filter={filter} setFilter={setFilter} fetchMovies={fetchMovies} />
-                {isLoading ? <Loading/> : <ResultsList results={movies} navigation={navigation} />}
-            </Center>
-        </Container>
+            <Container  width='100%' marginX='10' centerContent >
+                <Center>
+                    <FormMovies filter={filter} setFilter={setFilter} fetchMovies={fetchMovies} />
+                    {isLoading ? <Loading/> : <ResultsList results={movies} navigation={navigation} />}
+                </Center>
+            </Container>
     )
 }
 

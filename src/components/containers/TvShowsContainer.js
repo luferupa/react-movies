@@ -1,6 +1,5 @@
 import { Center, Container } from "native-base"
 import { useEffect, useState } from "react"
-import FormMovies from "../forms/FormMovies"
 import FormTvShows from "../forms/FormTvShows"
 import Loading from "../layout/Loading"
 import ResultsList from "../lists/ResultsList"
@@ -25,14 +24,14 @@ const TvShowsContainer = ({ navigation }) => {
         )
     }
 
- /*   useEffect(() => {
+    useEffect(() => {
         fetchTvShows(filter)
-    }, [])*/
+    }, [])
 
 
     return (
-        <Container>
-            <Center px={4}>
+        <Container width='100%' marginX='10' centerContent>
+            <Center>
                 <FormTvShows filter={filter} setFilter={setFilter} fetchTvShows={fetchTvShows} />
                 {isLoading ? <Loading/> : <ResultsList results={tvShows} navigation={navigation} />}
             </Center>

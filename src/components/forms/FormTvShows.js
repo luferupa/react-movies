@@ -1,8 +1,6 @@
-import { Select, VStack } from "native-base"
-import { useState } from "react"
+import { CheckIcon, Select, VStack } from "native-base"
 
 const FormTvShows = props => {
-    const [errors, setErrors] = useState([])
 
     const onValueChange = filterValue => {
         props.setFilter(filterValue)
@@ -11,7 +9,19 @@ const FormTvShows = props => {
 
     return (
         <VStack space={2} width='100%' py={5}>
-            <Select selectedValue={props.filter} minWidth="200" mt={1} onValueChange={filterValue => onValueChange(filterValue)}>
+            <Select 
+            selectedValue={props.filter} 
+            minWidth="200" mt={1} 
+            onValueChange={filterValue => onValueChange(filterValue)}
+            _selectedItem={{
+                endIcon: <CheckIcon size='5' color='white' />,
+                backgroundColor: '#37826E',
+                _text: {color: 'white'}
+            }}
+            _item={{
+                py: '2'
+            }}
+            >
                 <Select.Item label="airing_today" value="airing_today" />
                 <Select.Item label="popular" value="popular" />
                 <Select.Item label="on_the_air" value="on_the_air" />

@@ -7,11 +7,12 @@ const Stack = createNativeStackNavigator();
 const MoviesStack = ( route ) => {
     return (
         <Stack.Navigator>
-            <Stack.Screen name="List" 
+            <Stack.Screen name="List"
             component={MoviesScreen} 
             options={{  headerShown: false }} 
             />
-            <Stack.Screen name="Movie" component={MovieScreen}
+            <Stack.Screen name="Movie"
+            component={MovieScreen}
             options={({ route }) => ({
                 title: route.params.title,
                 headerBackTitle: 'Back to List',

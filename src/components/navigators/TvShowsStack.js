@@ -11,7 +11,8 @@ const TvShowsStack = ( route ) => {
             component={TvShowsScreen} 
             options={{  headerShown: false }} 
             />
-            <Stack.Screen name="Tv Show" component={TvShowScreen}
+            <Stack.Screen name="Tv Show"
+            component={TvShowScreen}
             options={({ route }) => ({
                 title: route.params.title,
                 headerBackTitle: 'Back to List',

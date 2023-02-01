@@ -8,7 +8,6 @@ const App = () => {
   return (
     <NativeBaseProvider>
       <Header />
-      {/*<MoviesContainer />*/}
       <TopTabsNavigator />
       <StatusBar style="auto" />
     </NativeBaseProvider>

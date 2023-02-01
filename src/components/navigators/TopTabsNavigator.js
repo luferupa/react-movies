@@ -12,9 +12,10 @@ const TopTabsNavigator = () => {
             <Tab.Navigator
                 screenOptions={{
                     tabBarLabelStyle : { textTransform: "none" },
+                    tabBarIndicatorStyle: { backgroundColor: 'black'}
                 }}
             >
-                <Tab.Screen 
+                <Tab.Screen
                 name="Movies" 
                 component={MoviesStack} 
                 options={{  headerShown: false }}

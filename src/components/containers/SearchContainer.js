@@ -25,20 +25,16 @@ const SearchContainer = ({ navigation }) => {
         )
     }
 
-    /*useEffect(() => {
-        fetchMovies()
-    }, [])*/
 
     return ( 
-        <Container>
-            <Center px={4}>
-            
+        <Container width='100%' marginX='10' centerContent>
+            <Center>
                 <SearchForm filter={filter} setFilter={setFilter} fetchResults={fetchResults} setShowName={setShowName} showName={showName} />
-            
+                
                 {isLoading ? <Loading/> 
                 : results.length > 0 ? 
                     <ResultsList results={results} navigation={navigation} isSearch={true}/>
-                    : <Box><Center><Text fontSize={25} width='100%'>Please initiate a search</Text></Center></Box>
+                    : <Box><Center><Text mt={20} fontSize={25} fontWeight='bold' width='100%'>Please initiate a search</Text></Center></Box>
                 }
             </Center>
         </Container>

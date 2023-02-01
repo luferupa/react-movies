@@ -1,5 +1,5 @@
 import { Ionicons } from "@expo/vector-icons"
-import { Button, Center, FormControl, HStack, Icon, Input, Select, VStack } from "native-base"
+import { Button, Center, CheckIcon, FormControl, HStack, Icon, Input, Select, VStack } from "native-base"
 import { useState } from "react";
 
 const SearchForm = props => {
@@ -13,6 +13,7 @@ const SearchForm = props => {
         }else{
             setErrors({})
             props.fetchResults()
+            props.setShowName('')
         }
       }
 
@@ -39,6 +40,10 @@ const SearchForm = props => {
                             onChangeText={value => {
                                 props.setShowName(value)
                               }}
+                            _invalid={{
+                                borderColor:'red.400' 
+                            }}
+                            value={props.showName}
                         />
                     </HStack>
                     
@@ -47,7 +52,22 @@ const SearchForm = props => {
                     <FormControl.Label fontSize='sm'>Choose Search Type</FormControl.Label>
                     <VStack width='100%'>
                         <HStack space={2}>
-                            <Select selectedValue={props.filter} width="180" mt={1} onValueChange={filterValue => onValueChange(filterValue)}>
+                            <Select 
+                            selectedValue={props.filter} 
+                            width="180" mt={1} 
+                            onValueChange={filterValue => onValueChange(filterValue)}
+                            _invalid={{
+                                borderColor:'red.400'
+                            }}
+                            _selectedItem={{
+                                endIcon: <CheckIcon size='5' color='white' />,
+                                backgroundColor: '#37826E',
+                                _text: {color: 'white'}
+                            }}
+                            _item={{
+                                py: '2'
+                            }}
+                            >
                                 <Select.Item label="movie" value="movie" />
                                 <Select.Item label="multi" value="multi" />
                                 <Select.Item label="tv" value="tv" />
@@ -59,6 +79,13 @@ const SearchForm = props => {
                             </Button>
                         </HStack>
                     </VStack>
+                    <FormControl.HelperText _text={{
+                        fontSize: 'xs'
+                    }} _invalid={{
+                        display: 'none'
+                    }}>
+                        Please select a search type
+                    </FormControl.HelperText>
                     <FormControl.ErrorMessage _text={{
                         fontSize: 'xs'
                     }}>
